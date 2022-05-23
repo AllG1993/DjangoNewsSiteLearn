@@ -4,6 +4,14 @@ from django.http import HttpResponse
 from .models import News, Category
 
 
+def old(request):
+    news = News.objects.all()
+    resp = ''
+    for i in news:
+        resp += f'<h2>{i.title}</h2><br><p>{i.content}</p><hr>'
+    return HttpResponse(resp)
+
+
 def index(request):
     news = News.objects.all()
     categories = Category.objects.all()
